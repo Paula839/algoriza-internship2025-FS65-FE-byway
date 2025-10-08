@@ -20,8 +20,14 @@ const AuthWrapper = ({ children, allowedRoles, requireNonEmptyCart, guestOnly }:
 
   if (!user) return <Navigate to="/login" replace />;
 
-if (allowedRoles?.includes("admin") && !user.isAdmin) {
-  return <div className="text-center mt-20 text-red-600">Unauthorized: Bad Request</div>;
+if (allowedRoles) {
+  if (allowedRoles.includes("Admin") && !user.isAdmin) {
+    return <div className="text-center mt-20 text-red-600">Unauthorized: Admin Only</div>;
+  }
+
+  if (allowedRoles.includes("User") && user.isAdmin) {
+    return <div className="text-center mt-20 text-red-600">Unauthorized: Users Only</div>;
+  }
 }
 
   if (requireNonEmptyCart && (!cart || cart.length === 0)) {

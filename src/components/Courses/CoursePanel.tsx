@@ -37,6 +37,23 @@ const CoursePanel = ({ course }: CoursePanelProps) => {
     if (!alreadyInCart && !alreadyPurchased) addToCart(course);
   };
 
+ const handleBuyNow = () => {
+  
+  if (!user) {
+    navigate("/login");
+    return;
+  }
+
+  if(alreadyInCart || alreadyPurchased) return;
+
+  addToCart(course);
+  
+
+  navigate("/checkout");
+};
+
+  
+
   return (
     <div
       className="absolute bg-white border border-gray-200 shadow-sm rounded-[16px]"
@@ -84,10 +101,12 @@ const CoursePanel = ({ course }: CoursePanelProps) => {
               : "Add to Cart"}
           </button>
 
-          {/* Buy Now Button */}
-          <button className="flex justify-center items-center w-full h-[56px] border border-gray-900 rounded-[8px] text-gray-900 font-medium text-[16px] leading-[160%]">
-            Buy Now
-          </button>
+         <button
+          onClick={handleBuyNow}
+          className="flex justify-center items-center w-full h-[56px] border border-gray-900 rounded-[8px] text-gray-900 font-medium text-[16px] leading-[160%] hover:bg-gray-100"
+        >
+          Buy Now
+        </button>
         </div>
       </div>
 
