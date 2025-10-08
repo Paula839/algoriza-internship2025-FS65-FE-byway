@@ -8,6 +8,8 @@ import Image6 from "../../assets/images/HomePage/image6.png";
 import Image7 from "../../assets/images/HomePage/image7.png";
 import Image8 from "../../assets/images/HomePage/image8.png";
 import useScrollReveal from "../../hooks/useScrollReveal";
+
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"; 
 
 interface HeroCircleProps {
@@ -33,7 +35,6 @@ const HeroCircle = ({
 }: HeroCircleProps) => {
   const imageTop = circleTop + circleSize - imageHeight;
   const imageLeft = circleLeft - (imageWidth - circleSize) / 2;
-
   return (
     <>
       <div
@@ -70,6 +71,7 @@ const HeroCircle = ({
 
 const HeroSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const navigate = useNavigate();
 
   return (
     <main
@@ -97,7 +99,7 @@ const HeroSection = () => {
         whileTap={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 250, damping: 20 }}
         className="mt-6 w-[169px] h-[48px] bg-[#3B82F6] rounded-[8px] px-[24px] py-[10px] flex items-center justify-center text-white font-inter font-medium text-[14px] leading-[160%] cursor-pointer"
-        onClick={() => (window.location.href = "/login")}
+        onClick={() => navigate("/login")}
       >
         Start your journey
       </motion.button>
