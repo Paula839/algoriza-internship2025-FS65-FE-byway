@@ -46,7 +46,6 @@ const App = () => {
   return () => clearTimeout(timer);
 }, [location.pathname]);
 
-  console.log("USER = ", user);
 
   const isAdminRoute = location.pathname.startsWith("/admin");
 

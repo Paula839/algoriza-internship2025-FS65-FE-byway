@@ -9,7 +9,6 @@ const api = axios.create({
   withCredentials: false,
 });
 
-console.log("API = ", api)
 
 api.interceptors.request.use(
   (config) => {

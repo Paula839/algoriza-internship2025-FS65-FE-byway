@@ -101,7 +101,6 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({ onApplyFilter }) => {
       pageSize: 9,
     };
 
-    console.log("📤 Sending DTO:", dto);
     onApplyFilter(dto);
   };
 

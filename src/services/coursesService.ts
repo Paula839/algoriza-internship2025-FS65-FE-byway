@@ -97,7 +97,6 @@ export const addCourse = async (course: Course): Promise<CourseDto | null> => {
 
 
     const { data } = await api.post<CourseDto>("/courses", courseDto);
-    console.log("eldata = ", data);
     return data;
   } catch (error) {
     console.error("Failed to add course:", error);

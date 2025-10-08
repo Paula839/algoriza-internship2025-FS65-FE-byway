@@ -25,7 +25,6 @@ export const getUserByEmail = async (email: string): Promise<User | null> => {
 
 export const purchase = async (cart: number[]): Promise<{ message: string; receipt: ReceiptDto } | null> => {
   try {
-    console.log("CARt = ", cart)
   const response = await api.post<{ message: string; receipt: ReceiptDto } | null>(`/users/purchase`, cart);
     return response.data;
   } catch (error) {

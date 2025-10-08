@@ -12,7 +12,6 @@ const Courses = () => {
   const [selectedSort, setSelectedSort] = useState<SortBy>(SortBy.HighestRated);
 
   const handleFilter = (dto: FilterDto) => {
-    console.log("Filter DTO:", dto);
     setFilterDto({ ...dto, sortBy: selectedSort });
     
   };

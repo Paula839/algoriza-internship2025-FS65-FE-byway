@@ -58,7 +58,6 @@ export const addInstructor = async (instructor: Instructor): Promise<Instructor 
 
 
     const { data } = await api.post<InstructorDto>("/instructors", instructorDto);
-    console.log("eldata = ", data);
     return data;
   } catch (error) {
     console.error("Failed to add instructor:", error);

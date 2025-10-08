@@ -15,7 +15,6 @@ const TopCourses = () => {
   useEffect(() => {
     const fetchTopCourses = async () => {
       const result = await getTopCourses();
-      console.log("Fetched courses:", result);
       setCourses(result);
       setLoading(false);
     };

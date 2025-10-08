@@ -22,9 +22,7 @@ export const login = async (login: LoginDto): Promise<TokenResponseDto | null> =
       login
     ); 
     const token = response.data?.accessToken;
-    console.log("TOKEN =", token)
     if (token) localStorage.setItem("authToken", token);
-    console.log("response.data = ", response.data)
     return response.data;
   } catch (error) {
     console.error(error);
