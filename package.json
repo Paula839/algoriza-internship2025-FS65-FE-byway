@@ -1,6 +1,5 @@
 {
   "name": "frontend",
-  "homepage": "https://Paula839.github.io/algoriza-internship2025-FS65-FE-byway/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,9 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -20,7 +17,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.22",
-    "gh-pages": "^6.3.0",
     "jotai": "^2.15.0",
     "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.544.0",

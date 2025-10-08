@@ -71,4 +71,3 @@ export default defineConfig([
   },
 ])
 ```
-# algoriza-internship2025-FS65-FE-byway
