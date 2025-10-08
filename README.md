@@ -1,3 +1,7 @@
+Use the following credentials for the Evaluation Admin Page:
+Username: Admin
+Password: Password
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
