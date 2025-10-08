@@ -1,6 +1,6 @@
-Use the following credentials for the Evaluation Admin Page:
-Username: Admin
-Password: Password
+Use the following credentials for the Evaluation Admin Page-------
+#Username: Admin
+#Password: Password
 
 # React + TypeScript + Vite
 
