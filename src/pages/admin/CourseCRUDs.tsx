@@ -10,6 +10,7 @@ import { InstructorCategory } from "../../types/enums/InstructorCategory";
 import { Level } from "../../types/enums/Level";
 import { getInstructor } from "../../services/instructorsService";
 import { addCourse, updateCourse } from "../../services/coursesService";
+import { uploadImage } from "../../services/uploadService";
 
 
 interface CourseCRUDsProps {
@@ -58,7 +59,7 @@ const CourseCRUDs = ({ mode }: CourseCRUDsProps) => {
     setCourse((prev) => ({ ...prev, [name]: value }));
   };
 
-const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
   if (e.target.files && e.target.files[0]) {
     const file = e.target.files[0];
 
@@ -68,11 +69,18 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       return;
     }
 
-    const url = URL.createObjectURL(file);
-    setCourse((prev) => ({ ...prev, image: url }));
+    const previewUrl = URL.createObjectURL(file);
+    setCourse((prev) => ({ ...prev, image: previewUrl }));
+
+    try {
+      const uploadedUrl = await uploadImage(file); 
+      setCourse((prev) => ({ ...prev, image: uploadedUrl })); 
+    } catch (err) {
+      console.error(err);
+      alert("Failed to upload image. Try again.");
+    }
   }
 };
-
   const handleContentChange = (index: number, field: keyof Content, value: string) => {
     const newContents = [...course.contents];
     if (field === "name") {
@@ -135,6 +143,9 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     else {
       setLoading(true);
       try {
+
+        
+
         if (mode === "add") {
           const response = await addCourse(course);
           if (response) setSuccessMessage("Course added successfully!");

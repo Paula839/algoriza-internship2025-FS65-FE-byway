@@ -4,6 +4,7 @@ import StarRating from "../StarRating";
 import type { Instructor } from "../../types";
 import { addInstructor, updateInstructor } from "../../services/instructorsService";
 import { InstructorCategory } from "../../types/enums/InstructorCategory";
+import { uploadImage } from "../../services/uploadService";
 
 interface InstructorModalProps {
   isOpen: boolean;
@@ -63,12 +64,19 @@ const InstructorModal = ({
   const handleSubmit = async () => {
     if (!validate()) return;
 
+      let uploadedUrl = pictureUrl;
+      if (pictureUrl && pictureUrl.startsWith("data:")) {
+      const blob = await fetch(pictureUrl).then(r => r.blob());
+      const file = new File([blob], "profile.jpg", { type: blob.type });
+      uploadedUrl = await uploadImage(file);
+    }
+
     const data: Instructor = {
       id: instructor?.id ?? Date.now(),
       name: name.trim(),
       title: title as InstructorCategory,
       description: description.trim() || undefined,
-      pictureUrl: pictureUrl || undefined,
+      pictureUrl: uploadedUrl || undefined,
       rate: Math.round(rate),
       numberOfCourses: instructor?.numberOfCourses || 0,
       numberOfStudents: instructor?.numberOfStudents || 0,
