@@ -76,8 +76,8 @@ const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
       const uploadedUrl = await uploadImage(file); 
       setCourse((prev) => ({ ...prev, image: uploadedUrl })); 
     } catch (err) {
-      console.error(err);
-      alert("Failed to upload image. Try again.");
+       console.error(err);
+      // alert("Failed to upload image. Try again.");
     }
   }
 };
