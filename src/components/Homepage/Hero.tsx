@@ -72,7 +72,7 @@ const HeroCircle = ({
 const HeroSection = () => {
   const { ref, isVisible } = useScrollReveal();
   const navigate = useNavigate();
-
+  
   return (
     <main
       ref={ref}
